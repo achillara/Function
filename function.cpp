@@ -12,15 +12,6 @@ double long factorial(int num){
 }
 
 double wow(double num, int raise) { 
-double total = 1;
-	for(int i = 1; i<= raise; i++)
-	{
-		total = total * num;
-	}
-	return total;
-}
-
-double long ten( double num, double raise){ 
 	double total = 1;
 	for(int i = 1; i<= raise; i++)
 	{
@@ -28,6 +19,15 @@ double long ten( double num, double raise){
 	}
 	return total;
 }
+
+double long e(long double raise){ 
+	long double answer = 0;
+	for( int i = 0; i<=20; i++){
+		 answer =  answer + wow(raise, i)/factorial(i);
+	}
+	return answer; 
+}
+
 
 
 
@@ -64,12 +64,13 @@ int main()
 	cout << fixed << setprecision(10) << answer << endl;
 	
 	//E^X
-	cout << "Enter power of 10:";
+	cout << "Enter power of e:";
 	cout << endl;
 	
 	long double power;
 	cin >> power;
-	cout << ten(10,power);
+	long double answer2 = e(power);
+	cout << fixed << setprecision(10) << answer2 << endl;
 		
 	return 0;
 }
