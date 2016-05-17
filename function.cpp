@@ -71,17 +71,41 @@ long double pi(){
 long double arctan(double x){ 
 	long double answer = 0;
 	int j=0;
- 	for( int i= 0; i<= 10000; i++){
+	if(x>1){ 
+		long double y = 1.0/x;
+		cout<<"are you rwokringr"; 
+		cout<< y << endl;
+ 	for( int i= 0; i<= 100000; i++){
 		if(i%2 ==0 ){
  	 		answer = answer;
  		}
  		else{ 
- 		  long double num = wow(x,i);
+ 		  long double num = wow(y,i);
  		  long double den = i; 
  		  long double frac = num/den;
  		  answer = answer + (wow(-1,j))*frac;
  		  j++;
  		}
+ 	}
+ 	 answer = pi()/2.0 - answer;
+ 	 cout<< answer<<endl;
+ 	 cout<<answer<<endl;
+ }
+
+ 	else { 
+ 		cout<<"are you rwokringr"; 
+ 	  for( int i= 0; i<= 100000; i++){
+			if(i%2 ==0 ){
+	 	 		answer = answer;
+	 		}
+	 		else{ 
+	 		  long double num = wow(x,i);
+	 		  long double den = i; 
+	 		  long double frac = num/den;
+	 		  answer = answer + (wow(-1,j))*frac;
+	 		  j++;
+ 			}
+		}
 	}
  	
  	answer = answer * 180/pi();
