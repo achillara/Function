@@ -58,7 +58,7 @@ long double seq(long double x, int n, int i){
 long double pi(){ 
 	long double pi = 2;
 	double pls = 1/2; 
-	for( int i =1; i< 100; i++){ 
+	for( int i =1; i< 1000; i++){ 
 
 		// recursive???
 		pi = pi * 2/seq(2.0,i,0);
@@ -69,13 +69,20 @@ long double pi(){
 }
 
 long double arctan(double x){ 
+	long double PIE2 = pi();
 	long double answer = 0;
 	int j=0;
+	bool sign_check = false;
+	 if(x < 0)
+	 {
+		  x = -1.0 * x;
+		 sign_check = true;
+	 }
 	if(x>1){ 
 		long double y = 1.0/x;
 		cout<<"are you rwokringr"; 
 		cout<< y << endl;
- 	for( int i= 0; i<= 100000; i++){
+ 	for( int i= 0; i<= 10000; i++){
 		if(i%2 ==0 ){
  	 		answer = answer;
  		}
@@ -87,14 +94,14 @@ long double arctan(double x){
  		  j++;
  		}
  	}
- 	 answer = pi()/2.0 - answer;
- 	 cout<< answer<<endl;
  	 cout<<answer<<endl;
- }
+ 	 answer = PIE2/2.0 - answer;
+ 	 cout<<answer<<endl;
+   }
 
  	else { 
  		cout<<"are you rwokringr"; 
- 	  for( int i= 0; i<= 100000; i++){
+ 	  for( int  i= 0; i<= 100000; i++){
 			if(i%2 ==0 ){
 	 	 		answer = answer;
 	 		}
@@ -107,10 +114,15 @@ long double arctan(double x){
  			}
 		}
 	}
- 	
- 	answer = answer * 180/pi();
- 	return answer;
-
+	answer = answer * (180.0/pi());
+	if(sign_check ==true)
+		{
+			return answer * -1.0;
+		}
+	else
+		{
+			return answer;
+		}
 
 }
 
