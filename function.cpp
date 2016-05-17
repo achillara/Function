@@ -22,8 +22,14 @@ double wow(double num, int raise) {
 
 long double e(long double raise){ 
 	 long double  answer = 0;
-	for( int i = 0; i<=20; i++){
-		 answer =  answer + wow(raise, i)/factorial(i);
+	 long double storage = 0;
+	for( int i = 0; i<=100; i++){
+		storage = wow(raise, i);
+		for(int n = i; n>0; n--)
+		{
+			storage = storage / (n*1.0);
+		}
+		 answer =  answer + storage;
 	}
 	return answer; 
 }
@@ -37,20 +43,17 @@ long double sqr(long double n){
 	return ans;
 }
 
-
 long double seq(long double x, int n, int i){
 	
     	if ( i>=n){
     		return 0.0;
     	}
     	else{ 
-    	cout << "this is i "<< i << endl;
          return  sqr(2+seq(x,n, i+1));
          
    		}
-
- 
 }
+
 
 long double pi(){ 
 	long double pi = 2;
@@ -62,24 +65,90 @@ long double pi(){
 		//pls = pls*1/2;
 
 	}
-
 	return pi;
 }
 
- long double sin(double theta){
+long double arctan(double x){ 
 	long double answer = 0;
 	int j=0;
-	for( int i= 0; i<= 20; i++){
+ 	for( int i= 0; i<= 10000; i++){
+		if(i%2 ==0 ){
+ 	 		answer = answer;
+ 		}
+ 		else{ 
+ 		  long double num = wow(x,i);
+ 		  long double den = i; 
+ 		  long double frac = num/den;
+ 		  answer = answer + (wow(-1,j))*frac;
+ 		  j++;
+ 		}
+	}
+ 	
+ 	answer = answer * 180/pi();
+ 	return answer;
+
+
+}
+
+
+/*long double arcsin(double x){ 
+	long double answer = 0;
+	int j=0;
+ 	for( int i= 0; i<= 20; i++){
+		if(i%2 ==0 ){
+ 	 		answer = answer;
+ 		}
+ 		else{ 
+ 		  long double num = wow(x,i);
+ 		  long double den = i; 
+ 		  long double frac = num/den;
+ 		  answer = answer + (wow(-1,j))*frac;
+ 		  j++;
+		}
+
+	}
+} */
+
+
+
+
+
+ long double sin(double theta){
+	 bool sign_check = false;
+	 if(theta < 0)
+	 {
+		 theta = -1.0 * theta;
+		 sign_check = true;
+	 }
+	long double answer = 0;
+	long double storage = 0;
+	int j = 0;
+	for( int i= 0; i<= 200; i++)
+	{
 		if(i%2 ==0 ){
 		 answer = answer;
 		}
-		else{ 
-			answer = answer + (wow(-1,j))*(wow(theta,i)/factorial(i));
+		else
+		{
+			storage = (wow(-1,j))*(wow(theta,i));
+		for(int n = i; n >0; n--)
+		{
+			storage = storage / (n*1.0);
+		}
+			answer = answer + storage;
 			j++;
 		}
 	}
-	return answer;
- }
+	if(sign_check ==true)
+	{
+		return answer * -1.0;
+	}
+	else
+	{
+		return answer;
+	}
+	}
+ 
 
 
 int main()
@@ -88,29 +157,18 @@ int main()
 	long double sqr2 = sqr(2);
 	long double seq2 = seq(2.0,2,0);
 
-	cout << fixed << setprecision(11) << PIE2 << endl;
+	cout << setprecision(12) << PIE2 << endl;
 
 	double theta;
 
-	// SINX
-	cout << "Enter Degree"; 
-	cout << endl;
-
-	cin >> theta;
 	
-	theta = theta * PIE2 / 180;
-	long double answer = sin(theta);
-
-	cout << fixed << setprecision(10) << answer << endl;
-	
-	//E^X
-	cout << "Enter power of e:";
+	cout << "Enter arctan:";
 	cout << endl;
 	
 	long double power;
 	cin >> power;
-	long double answer2 = e(power);
-	cout << fixed << setprecision(10) << answer2 << endl;
+	long double answer2 = arctan(power);
+	cout << setprecision(12) << answer2 << endl;
 		
 	return 0;
 }
