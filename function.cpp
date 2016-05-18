@@ -126,29 +126,6 @@ long double arctan(double x){
 
 }
 
-
-/*long double arcsin(double x){ 
-	long double answer = 0;
-	int j=0;
- 	for( int i= 0; i<= 20; i++){
-		if(i%2 ==0 ){
- 	 		answer = answer;
- 		}
- 		else{ 
- 		  long double num = wow(x,i);
- 		  long double den = i; 
- 		  long double frac = num/den;
- 		  answer = answer + (wow(-1,j))*frac;
- 		  j++;
-		}
-
-	}
-} */
-
-
-
-
-
  long double sin(double theta){
 	 bool sign_check = false;
 	 if(theta < 0)
@@ -193,7 +170,7 @@ int main()
 	long double sqr2 = sqr(2);
 	long double seq2 = seq(2.0,2,0);
 
-	cout << setprecision(12) << PIE2 << endl;
+	cout << setprecision(20) << PIE2 << endl;
 
 	double theta;
 
